@@ -207,6 +207,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       },
                     ),
                   ),
+                  SizedBox(height: constrain.maxHeight * 0.04),
                   Stack(
                     children: [
                       Image.asset('assets/images/bmi4.png'),

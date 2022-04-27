@@ -1,4 +1,4 @@
-#Wed Apr 27 15:05:57 EET 2022
+#Wed Apr 27 15:39:47 EET 2022
 base.0=/Users/sayed/Desktop/Flutter_App/bmi_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
