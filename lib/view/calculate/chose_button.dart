@@ -15,17 +15,16 @@ class _ChoseTypeButtonState extends State<ChoseTypeButton> {
   String type = '';
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         choseTypeButton(
-          size: size,
+          size: widget.constraints,
           name: 'male',
           assets: 'assets/images/Male icon.png',
         ),
         choseTypeButton(
-          size: size,
+          size: widget.constraints,
           name: 'female',
           assets: 'assets/images/Femaleicon.png',
         ),
@@ -34,7 +33,7 @@ class _ChoseTypeButtonState extends State<ChoseTypeButton> {
   }
 
   Widget choseTypeButton({
-    @required Size? size,
+    @required BoxConstraints? size,
     @required String? name,
     @required String? assets,
   }) {
@@ -46,8 +45,10 @@ class _ChoseTypeButtonState extends State<ChoseTypeButton> {
           });
         },
         child: Container(
-          width: size!.width * 0.25,
-          height: size.height * 0.12,
+          width: size!.maxWidth * 0.25,
+          height: size.maxWidth > 600
+              ? size.maxHeight * 0.2
+              : size.maxHeight * 0.15,
           decoration: BoxDecoration(
             color: type.trim() == name!.trim()
                 ? const Color(0xff72909D)

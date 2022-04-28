@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_declarations, unnecessary_string_interpolations
 
+import 'package:bmi_app/model/constants/result_text.dart';
 import 'package:bmi_app/model/dataModel/data_model.dart';
 import 'package:bmi_app/model/dataModel/local_data_base.dart';
 
@@ -119,16 +120,19 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             fontSize: size.width * 0.09,
                           ),
                         ),
-                        SizedBox(width: size.width * 0.005),
-                        IconButton(
-                          onPressed: () async {
-                            // result = '0.0';
-                          },
-                          icon: Image.asset(
-                            'assets/images/refresh_btn.png',
-                            width: size.width * 0.2,
-                          ),
-                        )
+                        //SizedBox(width: size.width * 0.005),
+                        // IconButton(
+                        //   onPressed: () async {
+                        //     await dataModel.deleteAllData().then((value) {
+                        //       setState(() {});
+                        //     });
+                        //     // result = '0.0';
+                        //   },
+                        //   icon: Image.asset(
+                        //     'assets/images/refresh_btn.png',
+                        //     width: size.width * 0.2,
+                        //   ),
+                        // )
                       ],
                     ),
                   ),
@@ -141,6 +145,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CollectWeightTall(
+                        width: constrain.maxWidth * 0.3,
                         hintText: '20',
                         lableText: 'age',
                         save: (value) async {
@@ -160,6 +165,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         },
                       ),
                       CollectWeightTall(
+                        width: constrain.maxWidth * 0.3,
                         hintText: '80',
                         lableText: 'weight',
                         save: (value) async {
@@ -185,6 +191,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                   SizedBox(height: size.height * 0.02),
                   Center(
                     child: CollectWeightTall(
+                      width: constrain.maxWidth * 0.3,
                       hintText: '150',
                       lableText: 'height',
                       save: (value) async {
@@ -215,9 +222,11 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         child: resultText(result: result, constr: constrain),
                         // left: 20,
                         bottom: constrain.heightConstraints().maxHeight * 0.02,
-                        right: constrain.widthConstraints().maxWidth > 392
-                            ? constrain.widthConstraints().maxWidth * 0.44
-                            : constrain.widthConstraints().maxWidth * 0.425,
+                        right: result != '0.0'
+                            ? constrain.widthConstraints().maxWidth > 392
+                                ? constrain.widthConstraints().maxWidth * 0.4
+                                : constrain.widthConstraints().maxWidth * 0.425
+                            : constrain.widthConstraints().maxWidth * 0.44,
                       )
                     ],
                   )
@@ -227,20 +236,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
           ),
         );
       }),
-    );
-  }
-
-  Text resultText({String? result, BoxConstraints? constr}) {
-    return Text(
-      result!,
-      style: TextStyle(
-        fontSize: constr!.widthConstraints().maxWidth * 0.1,
-        color: double.parse(result) < 18.5
-            ? Colors.blue
-            : double.parse(result) < 25.0
-                ? Colors.green
-                : Colors.red,
-      ),
     );
   }
 

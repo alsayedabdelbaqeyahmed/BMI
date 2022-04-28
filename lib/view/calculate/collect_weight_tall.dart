@@ -8,12 +8,14 @@ class CollectWeightTall extends StatefulWidget {
     this.save,
     this.onFieldSubmitted,
     this.onChanged,
+    this.width,
   }) : super(key: key);
   final String? hintText;
   final String? lableText;
   final Function(String)? onFieldSubmitted;
   final Function(String?)? save;
   final Function(String)? onChanged;
+  final double? width;
 
   @override
   State<CollectWeightTall> createState() => _CollectWeightTallState();
@@ -32,7 +34,7 @@ class _CollectWeightTallState extends State<CollectWeightTall> {
           end: size.width * 0.07,
         ),
         child: SizedBox(
-          width: size.width * 0.3,
+          width: widget.width,
           child: TextFormField(
             style: const TextStyle(color: Colors.white),
             keyboardType: TextInputType.number,
