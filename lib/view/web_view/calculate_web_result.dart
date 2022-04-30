@@ -118,8 +118,15 @@ class _CalculateWebResultState extends State<CalculateWebResult> {
                             bottom:
                                 constrain.heightConstraints().maxHeight * 0.02,
                             right: result == '0'
-                                ? constrain.widthConstraints().maxWidth * 0.35
-                                : constrain.widthConstraints().maxWidth * 0.33,
+                                ? constrain.maxWidth < 1300
+                                    ? constrain.maxWidth * 0.32
+                                    : constrain.maxWidth < 1800 &&
+                                            constrain.maxWidth > 1300
+                                        ? constrain.maxWidth * 0.40
+                                        : constrain.maxWidth > 1800
+                                            ? constrain.maxWidth * 0.41
+                                            : constrain.maxWidth * 0.36
+                                : constrain.maxWidth * 0.33,
                           )
                         ],
                       ),

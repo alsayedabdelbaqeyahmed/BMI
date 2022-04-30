@@ -120,19 +120,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             fontSize: size.width * 0.09,
                           ),
                         ),
-                        //SizedBox(width: size.width * 0.005),
-                        // IconButton(
-                        //   onPressed: () async {
-                        //     await dataModel.deleteAllData().then((value) {
-                        //       setState(() {});
-                        //     });
-                        //     // result = '0.0';
-                        //   },
-                        //   icon: Image.asset(
-                        //     'assets/images/refresh_btn.png',
-                        //     width: size.width * 0.2,
-                        //   ),
-                        // )
                       ],
                     ),
                   ),
@@ -166,7 +153,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       ),
                       CollectWeightTall(
                         width: constrain.maxWidth * 0.3,
-                        hintText: '80',
+                        hintText: 'Kg',
                         lableText: 'weight',
                         save: (value) async {
                           weight = value;
@@ -192,7 +179,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                   Center(
                     child: CollectWeightTall(
                       width: constrain.maxWidth * 0.3,
-                      hintText: '150',
+                      hintText: 'Cm',
                       lableText: 'height',
                       save: (value) async {
                         tall = value;

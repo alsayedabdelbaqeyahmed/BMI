@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bmi_app/model/constants/constant_data.dart';
 import 'package:bmi_app/view/home.dart';
 import 'package:bmi_app/view/web_view/calculate_web_result.dart';
 import 'package:flutter/foundation.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Muli',
-        // inputDecorationTheme: inputDecorationStyle(),
+        inputDecorationTheme: inputDecorationStyle(),
         textTheme: const TextTheme(
           bodyText1: TextStyle(color: Color(0xFF757575)),
           bodyText2: TextStyle(color: Color(0xFF757575)),
