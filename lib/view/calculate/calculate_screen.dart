@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_declarations, unnecessary_string_interpolations
 
+import 'dart:math';
+
+import 'package:bmi_app/model/constants/animated_page-route.dart';
 import 'package:bmi_app/model/constants/result_text.dart';
-import 'package:bmi_app/model/dataModel/data_model.dart';
-import 'package:bmi_app/model/dataModel/local_data_base.dart';
 
 import 'package:bmi_app/view/calculate/collect_weight_tall.dart';
 
@@ -19,40 +20,22 @@ class CalculateScreen extends StatefulWidget {
 }
 
 class _CalculateScreenState extends State<CalculateScreen> {
-  final dataModel = LocalDataBase.db;
-  DataModel? data;
-
   String? age;
   String? weight;
   String? tall;
 
-  Future<DataModel> localUserData() async {
-    // var db = LocalDataBase.db;
-
-    await dataModel.getUserData().then((value) {
-      data = value;
-    });
-
-    return data!;
-  }
-
-  Future getDataBase(DataModel data) async {
-    var db = LocalDataBase.db;
-    await db.inserData(data);
-  }
-
   String? result = '0.0';
 
   String? resultBmi() {
-    if (data?.tallValues?.trim() != null &&
-        data?.weightValues?.trim() != null &&
-        data!.weightValues!.isNotEmpty &&
-        data!.tallValues!.isNotEmpty) {
-      final weight = double.tryParse(data!.weightValues!);
-      final tall = double.tryParse(data!.tallValues!);
-      final tallWithMeter = tall! / 100;
+    if (tall?.trim() != null &&
+        weight?.trim() != null &&
+        weight!.isNotEmpty &&
+        tall!.isNotEmpty) {
+      final reweight = double.tryParse(weight!);
+      final retall = double.tryParse(tall!);
+      final tallWithMeter = retall! / 100;
 
-      final bmi = weight! / (tallWithMeter * tallWithMeter);
+      final bmi = reweight! / pow(tallWithMeter, 2);
 
       result = bmi.toStringAsFixed(1);
       return result;
@@ -63,11 +46,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
 
   @override
   void initState() {
-    localUserData().then((value) {
-      setState(() {});
-      resultBmi();
-    });
-
+    resultBmi();
     super.initState();
   }
 
@@ -120,6 +99,26 @@ class _CalculateScreenState extends State<CalculateScreen> {
                             fontSize: size.width * 0.09,
                           ),
                         ),
+                        SizedBox(width: size.width * 0.005),
+                        IconButton(
+                          onPressed: () async {
+                            Navigator.of(context).pushReplacement(
+                              AnimatedPageRoute(
+                                beginDx: 10.0,
+                                beginDy: 10.0,
+                                endDx: 0.0,
+                                endDy: 0.0,
+                                duration: const Duration(seconds: 0),
+                                curve: Curves.ease,
+                                widget: const CalculateScreen(),
+                              ),
+                            );
+                          },
+                          icon: Image.asset(
+                            'assets/images/refresh_btn.png',
+                            width: size.width * 0.2,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -138,17 +137,18 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         save: (value) async {
                           //  print(value);
                           age = value;
-                          await onsaved();
+                          resultBmi();
+                          setState(() {});
                         },
                         onFieldSubmitted: (value) async {
                           age = value;
-                          await onsaved();
-                          // setState(() {});
+                          resultBmi();
+                          setState(() {});
                         },
                         onChanged: (value) async {
                           age = value;
-                          await onsaved();
-                          // setState(() {});
+                          resultBmi();
+                          setState(() {});
                         },
                       ),
                       CollectWeightTall(
@@ -157,20 +157,19 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         lableText: 'weight',
                         save: (value) async {
                           weight = value;
-                          await onsaved();
-                          // print(value);
+                          resultBmi();
+                          setState(() {});
                         },
                         onFieldSubmitted: (value) async {
                           weight = value;
-                          await onsaved();
-
-                          //  setState(() {});
+                          resultBmi();
+                          setState(() {});
                         },
                         onChanged: (value) async {
                           weight = value;
 
-                          await onsaved();
-                          //  setState(() {});
+                          resultBmi();
+                          setState(() {});
                         },
                       ),
                     ],
@@ -183,21 +182,20 @@ class _CalculateScreenState extends State<CalculateScreen> {
                       lableText: 'height',
                       save: (value) async {
                         tall = value;
-                        // print(value);
-
-                        await onsaved();
+                        resultBmi();
+                        setState(() {});
                       },
                       onFieldSubmitted: (value) async {
                         tall = value;
 
-                        await onsaved();
-                        //  setState(() {});
+                        resultBmi();
+                        setState(() {});
                       },
                       onChanged: (value) async {
                         tall = value;
 
-                        await onsaved();
-                        //  setState(() {});
+                        resultBmi();
+                        setState(() {});
                       },
                     ),
                   ),
@@ -223,23 +221,6 @@ class _CalculateScreenState extends State<CalculateScreen> {
           ),
         );
       }),
-    );
-  }
-
-  Future onsaved() async {
-    await getDataBase(
-      DataModel(
-        tallValues: tall,
-        weightValues: weight,
-        ageValues: age,
-      ),
-    ).then(
-      (value) async {
-        await localUserData().then((value) {
-          setState(() {});
-          resultBmi();
-        });
-      },
     );
   }
 }

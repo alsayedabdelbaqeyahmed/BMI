@@ -5,7 +5,6 @@ INJECTED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/Andr
 INJECTED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/AndroidManifest.xml:1:1-41:12
 INJECTED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/AndroidManifest.xml:1:1-41:12
 MERGED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/AndroidManifest.xml:1:1-41:12
-MERGED from [:sqflite] /Users/sayed/Desktop/Flutter_App/bmi_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/sayed/.gradle/caches/transforms-2/files-2.1/761d5aed95183ada80b8d01ca626656b/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/sayed/.gradle/caches/transforms-2/files-2.1/4ae8db8808990911ffb0cc1d905648d2/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/sayed/.gradle/caches/transforms-2/files-2.1/bbf4cbc54853a53f7a06e0dba1ebd51c/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -100,8 +99,6 @@ uses-sdk
 INJECTED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/sayed/Desktop/Flutter_App/bmi_app/android/app/src/main/AndroidManifest.xml
-MERGED from [:sqflite] /Users/sayed/Desktop/Flutter_App/bmi_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:sqflite] /Users/sayed/Desktop/Flutter_App/bmi_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/sayed/.gradle/caches/transforms-2/files-2.1/761d5aed95183ada80b8d01ca626656b/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/sayed/.gradle/caches/transforms-2/files-2.1/761d5aed95183ada80b8d01ca626656b/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/sayed/.gradle/caches/transforms-2/files-2.1/4ae8db8808990911ffb0cc1d905648d2/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
