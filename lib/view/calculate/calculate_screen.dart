@@ -102,7 +102,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                         SizedBox(width: size.width * 0.005),
                         IconButton(
                           onPressed: () async {
-                            Navigator.of(context).pushReplacement(
+                            Navigator.of(context).pushAndRemoveUntil(
                               AnimatedPageRoute(
                                 beginDx: 10.0,
                                 beginDy: 10.0,
@@ -112,6 +112,7 @@ class _CalculateScreenState extends State<CalculateScreen> {
                                 curve: Curves.ease,
                                 widget: const CalculateScreen(),
                               ),
+                              (_) => false,
                             );
                           },
                           icon: Image.asset(
